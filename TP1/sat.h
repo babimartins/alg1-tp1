@@ -8,19 +8,18 @@
 class SAT {
 private:
     int size, componentsNumber;
-    std::vector<std::vector<int>> graph;
-    std::vector<std::vector<int>> graphT;
-    std::vector<bool> visited;
-    std::stack<int> finished;
+    std::vector<std::vector<int>> graph, graphT;
+    std::vector<bool> usedVertex;
+    std::vector<int> components;
+    std::stack<int> finishingOrder;
 
     void dfs(int vertex);
     void dfs_t(int vertex);
 
 public:
-    SAT();
     SAT(int n);
-    void add(int posV, bool negV, int posU, bool negU);
-    bool sat_2();
+    void add(int v, int u, bool neg);
+    bool solve_2SAT();
 };
 
 #endif //SAT_H
