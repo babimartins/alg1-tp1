@@ -1,17 +1,30 @@
 #include <iostream>
-#include <map>
-#include <string>
-#include <vector>
+#include "sat.h"
 
 int main() {
-  
-  //make a vector of ints
-  std::vector<int> v;
+    int followers, propositions;
+    std::cin >> followers >> propositions;
 
-  //make a map of strings to ints
-  std::map<std::string, int> m;
+    while (followers > 0 && propositions > 0) {
+        SAT sat = SAT(propositions);
 
-  // call a function in another file
+        for (int i = 0; i < followers; ++i) {
+            int keepP1, keepP2, removeP1, removeP2;
+            std::cin >> keepP1 >> keepP2 >> removeP1 >> removeP2;
 
-  return(0);
+            sat.add(keepP1, keepP2, false);
+            sat.add(removeP1, removeP2, true);
+        }
+
+        bool isPossible = sat.sat_2();
+        if (isPossible) {
+            std::cout << "sim" << std::endl;
+        } else {
+            std::cout << "nao" << std::endl;
+        }
+
+        std::cin >> followers >> propositions;
+    }
+
+    return(0);
 }
