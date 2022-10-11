@@ -17,7 +17,7 @@ private:
     void dfs_t(int vertex);
 
 public:
-    SAT(int n);
+    explicit SAT(int n);
     void add(int v, int u, bool neg);
     bool solve_2SAT();
 };
