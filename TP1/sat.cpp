@@ -50,7 +50,7 @@ bool SAT::solve_2SAT() {
     }
 
     for (int i = 0; i < 2*size; ++i) {
-        usedVertex.push_back(false);
+        usedVertex[i] = false;
     }
 
     while(!finishingOrder.empty()){
