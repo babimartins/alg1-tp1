@@ -14,7 +14,7 @@ private:
     std::stack<int> finishingOrder;
 
     void dfs(int vertex);
-    void dfs_t(int vertex, int componentsNumber);
+    void dfs_t(int vertex, int componentNumber);
 
 public:
     explicit SAT(int n);

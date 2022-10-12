@@ -3,10 +3,10 @@
 SAT::SAT(int n) {
     size = n;
 
-    graph.resize(2*n);
-    graphT.resize(2*n);
-    components.resize(2*n);
-    usedVertex.resize(2*n, false);
+    graph.resize(2 * size);
+    graphT.resize(2 * size);
+    components.resize(2 * size);
+    usedVertex.resize(2 * size, false);
 }
 
 void SAT::add(int v, int u, bool neg) {
@@ -79,12 +79,12 @@ void SAT::dfs(int vertex) {
     finishingOrder.push(vertex);
 }
 
-void SAT::dfs_t(int vertex, int componentsNumber) {
+void SAT::dfs_t(int vertex, int componentNumber) {
     usedVertex[vertex] = true;
-    for(auto i: graphT[vertex]){
-        if(!usedVertex[i]){
-            dfs_t(i, componentsNumber);
+    for(auto v: graphT[vertex]){
+        if(!usedVertex[v]){
+            dfs_t(v, componentNumber);
         }
     }
-    components[vertex] = componentsNumber;
+    components[vertex] = componentNumber;
 }
