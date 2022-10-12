@@ -51,7 +51,7 @@ bool SAT::solve_2SAT() {
     }
 
     while(!finishingOrder.empty()){
-        int top = finishingOrder.top() - 1;
+        int top = finishingOrder.top();
         finishingOrder.pop();
 
         if(!usedVertex[top]){
@@ -76,7 +76,7 @@ void SAT::dfs(int vertex) {
             dfs(i);
         }
     }
-    finishingOrder.push(vertex + 1);
+    finishingOrder.push(vertex);
 }
 
 void SAT::dfs_t(int vertex, int componentsNumber) {
