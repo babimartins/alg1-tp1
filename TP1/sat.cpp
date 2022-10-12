@@ -6,10 +6,7 @@ SAT::SAT(int n) {
     graph.resize(2*n);
     graphT.resize(2*n);
     components.resize(2*n);
-
-    for (int i = 0; i < 2*n; ++i) {
-        usedVertex.push_back(false);
-    }
+    usedVertex.resize(2*n, false);
 }
 
 void SAT::add(int v, int u, bool neg) {
@@ -43,7 +40,7 @@ void SAT::add(int v, int u, bool neg) {
 
 bool SAT::solve_2SAT() {
     int componentsNumber = 0;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < 2*size; i++) {
         if (!usedVertex[i]) {
             dfs(i);
         }
