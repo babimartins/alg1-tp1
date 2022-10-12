@@ -16,7 +16,7 @@ int main() {
             sat.add(removeP1, removeP2, true);
         }
 
-        bool isPossible = sat.sat_2();
+        bool isPossible = sat.solve_2SAT();
         if (isPossible) {
             std::cout << "sim" << std::endl;
         } else {

@@ -71,3 +71,23 @@ bool SAT::solve_2SAT() {
     }
     return isPossible;
 }
+
+void SAT::dfs(int vertex) {
+    usedVertex[vertex] = true;
+    for(auto i: graph[vertex]){
+        if(!usedVertex[i]){
+            dfs(i);
+        }
+    }
+    finishingOrder.push(vertex + 1);
+}
+
+void SAT::dfs_t(int vertex, int componentsNumber) {
+    usedVertex[vertex] = true;
+    for(auto i: graphT[vertex]){
+        if(!usedVertex[i]){
+            dfs_t(i, componentsNumber);
+        }
+    }
+    components[vertex] = componentsNumber;
+}
