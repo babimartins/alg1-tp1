@@ -2,7 +2,6 @@
 
 SAT::SAT(int n) {
     size = n;
-    componentsNumber = 0;
 
     graph.resize(2*n);
     graphT.resize(2*n);
@@ -40,4 +39,35 @@ void SAT::add(int v, int u, bool neg) {
         graphT[vertexV].push_back(vertexNegU);
         graphT[vertexU].push_back(vertexNegV);
     }
+}
+
+bool SAT::solve_2SAT() {
+    int componentsNumber = 0;
+    for (int i = 0; i < size; i++) {
+        if (!usedVertex[i]) {
+            dfs(i);
+        }
+    }
+
+    for (int i = 0; i < 2*size; ++i) {
+        usedVertex.push_back(false);
+    }
+
+    while(!finishingOrder.empty()){
+        int top = finishingOrder.top() - 1;
+        finishingOrder.pop();
+
+        if(!usedVertex[top]){
+            componentsNumber++;
+            dfs_t(top, componentsNumber);
+        }
+    }
+
+    bool isPossible = true;
+    for (int i = 0; i < size; i++) {
+        if (components[i] == components[i + size]) {
+            isPossible = false;
+        }
+    }
+    return isPossible;
 }

@@ -7,14 +7,14 @@
 
 class SAT {
 private:
-    int size, componentsNumber;
+    int size;
     std::vector<std::vector<int>> graph, graphT;
     std::vector<bool> usedVertex;
     std::vector<int> components;
     std::stack<int> finishingOrder;
 
     void dfs(int vertex);
-    void dfs_t(int vertex);
+    void dfs_t(int vertex, int componentsNumber);
 
 public:
     explicit SAT(int n);
