@@ -39,7 +39,7 @@ void SAT::add(int v, int u, bool neg) {
 }
 
 bool SAT::solve_2SAT() {
-    int componentsNumber = 0;
+    int componentNumber = 0;
     for (int i = 0; i < 2*size; i++) {
         if (!usedVertex[i]) {
             dfs(i);
@@ -55,8 +55,8 @@ bool SAT::solve_2SAT() {
         finishingOrder.pop();
 
         if(!usedVertex[top]){
-            componentsNumber++;
-            dfs_t(top, componentsNumber);
+            componentNumber++;
+            dfs_t(top, componentNumber);
         }
     }
 
